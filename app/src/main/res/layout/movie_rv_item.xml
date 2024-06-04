@@ -10,6 +10,7 @@
     app:cardUseCompatPadding="true">
 
         <ImageView
+            android:id="@+id/movie_image"
             android:layout_width="200dp"
             android:layout_height="150dp"
             android:src="#3F51B5"
