@@ -18,9 +18,13 @@ class MoviePagingAdapter :
 
     class MovieViewHolder(private val binding: MovieRvItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(movie: Movie) {
 
             binding.apply {
+
+                title.text = movie.title
+                vote.text = movie.voteAverage.toString()
 
                 Glide.with(itemView.context)
                     .load("$BASE_IMAGE_URL${movie.posterPath}")

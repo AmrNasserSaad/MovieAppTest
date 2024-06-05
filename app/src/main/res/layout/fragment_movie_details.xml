@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.details.MovieDetailsFragment">
+    >
 
     <ImageView
-        android:id="@+id/movie_image"
+        android:id="@+id/movie_details_image"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:scaleType="centerCrop"
@@ -27,7 +27,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movie_image" />
+        app:layout_constraintTop_toBottomOf="@+id/movie_details_image" />
 
     <TextView
         android:id="@+id/movie_vote"
@@ -39,7 +39,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movie_image" />
+        app:layout_constraintTop_toBottomOf="@+id/movie_details_image" />
 
     <TextView
         android:id="@+id/movie_overview"

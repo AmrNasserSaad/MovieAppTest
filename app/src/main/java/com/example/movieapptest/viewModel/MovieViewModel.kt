@@ -22,5 +22,12 @@ class MovieViewModel @Inject constructor(
         return movieRepo
 
     }
+    fun getTopRatedMovies(apiKey: String): Flow<PagingData<Movie>> {
+
+        val movieRepo = movieRepository.getTopRatedMovies(apiKey).flow.cachedIn(viewModelScope)
+        Log.d("TAG", "getPopularMovies: $movieRepo")
+        return movieRepo
+
+    }
 
 }

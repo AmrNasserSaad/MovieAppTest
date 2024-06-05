@@ -1,4 +1,4 @@
-package com.example.movieapptest.adapters
+package com.example.movieapptest.Pager
 
 import android.util.Log
 import androidx.paging.PagingSource
