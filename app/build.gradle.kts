@@ -4,6 +4,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -81,9 +82,9 @@ dependencies {
 
 
     // Paging 3
-    implementation ("androidx.paging:paging-runtime-ktx:3.3.0")
+    implementation("androidx.paging:paging-runtime-ktx:3.3.0")
 
     // Lifecycle (for ViewModel and StateFlow)
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
 }

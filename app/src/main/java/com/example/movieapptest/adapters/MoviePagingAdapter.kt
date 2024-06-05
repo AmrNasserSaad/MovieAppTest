@@ -42,7 +42,13 @@ class MoviePagingAdapter :
         val movie = getItem(position)
         if (movie != null) {
             holder.bind(movie)
+            holder.itemView.setOnClickListener {
+                onClickListener?.invoke(movie)
+            }
         }
+
+
+
     }
 
     override fun onCreateViewHolder(
@@ -66,5 +72,7 @@ class MoviePagingAdapter :
 
     }
 
+
+    var onClickListener: ((Movie) -> Unit)? = null
 
 }

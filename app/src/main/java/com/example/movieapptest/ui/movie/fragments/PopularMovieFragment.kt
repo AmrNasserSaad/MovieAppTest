@@ -10,8 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.movieapptest.R
 import com.example.movieapptest.adapters.MoviePagingAdapter
 import com.example.movieapptest.databinding.FragmentPopularMovieBinding
 import com.example.movieapptest.utils.Constants.API_KEY
@@ -53,6 +55,18 @@ class PopularMovieFragment : Fragment() {
                 }
             }
         }
+
+
+        adapter.onClickListener = {
+            val b = Bundle().apply { putParcelable("movie", it) }
+            findNavController()
+                .navigate(R.id.action_homeFragment_to_movieDetailsFragment,b)
+        }
+
+
+
+
+
     }
 }
 
