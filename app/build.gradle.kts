@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.paging.common.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -77,4 +78,12 @@ dependencies {
     // Glide
     implementation("com.github.bumptech.glide:glide:4.13.0")
     kapt("com.github.bumptech.glide:compiler:4.13.0")
+
+
+    // Paging 3
+    implementation ("androidx.paging:paging-runtime-ktx:3.3.0")
+
+    // Lifecycle (for ViewModel and StateFlow)
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
 }
