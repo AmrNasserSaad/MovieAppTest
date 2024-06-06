@@ -1,7 +1,6 @@
 package com.example.movieapptest.di
 
 import com.example.movieapptest.api.TmdbApi
-import com.example.movieapptest.data.PopularMovieResponse
 import com.example.movieapptest.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides

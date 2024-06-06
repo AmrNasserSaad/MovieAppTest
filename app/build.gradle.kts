@@ -74,7 +74,8 @@ dependencies {
     implementation("androidx.room:room-ktx:2.5.2")
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
 
     // Glide
     implementation("com.github.bumptech.glide:glide:4.13.0")
@@ -87,4 +88,5 @@ dependencies {
     // Lifecycle (for ViewModel and StateFlow)
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
 }

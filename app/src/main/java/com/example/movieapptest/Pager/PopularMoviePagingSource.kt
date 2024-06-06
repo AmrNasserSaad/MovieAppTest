@@ -6,7 +6,7 @@ import androidx.paging.PagingState
 import com.example.movieapptest.api.TmdbApi
 import com.example.movieapptest.data.Movie
 
-class MoviePagingSource(
+class PopularMoviePagingSource(
     private val tmdbApi: TmdbApi,
     private val apiKey: String
 ) : PagingSource<Int, Movie>() {
