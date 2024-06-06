@@ -12,7 +12,10 @@ import com.example.movieapptest.data.Movie
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class MovieRepository @Inject constructor(private val tmdbApi: TmdbApi) {
+class MovieRepository @Inject constructor(
+    private val tmdbApi: TmdbApi,
+
+) {
 
     fun getPopularMovies(apiKey: String): Pager<Int, Movie> {
         Log.d("TAG", "repo called")
