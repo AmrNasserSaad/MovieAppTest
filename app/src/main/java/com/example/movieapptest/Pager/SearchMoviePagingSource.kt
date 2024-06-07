@@ -4,9 +4,8 @@ import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.movieapptest.api.TmdbApi
-import com.example.movieapptest.data.Movie
+import com.example.movieapptest.data.remote.Movie
 import com.example.movieapptest.utils.Constants.API_KEY
-import retrofit2.http.Query
 
 class SearchMoviePagingSource (
     private val tmdbApi: TmdbApi,

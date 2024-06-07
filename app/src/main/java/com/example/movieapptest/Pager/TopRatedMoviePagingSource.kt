@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.movieapptest.api.TmdbApi
-import com.example.movieapptest.data.Movie
+import com.example.movieapptest.data.remote.Movie
 
 class TopRatedMoviePagingSource(
     private val tmdbApi: TmdbApi,

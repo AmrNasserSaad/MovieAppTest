@@ -7,8 +7,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.movieapptest.R
-import com.example.movieapptest.data.Movie
+import com.example.movieapptest.data.remote.Movie
 import com.example.movieapptest.databinding.MovieRvItemBinding
 import com.example.movieapptest.utils.Constants.BASE_IMAGE_URL
 

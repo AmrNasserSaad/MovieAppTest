@@ -3,7 +3,7 @@ package com.example.movieapptest.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
-import com.example.movieapptest.data.Movie
+import com.example.movieapptest.data.remote.Movie
 import com.example.movieapptest.repos.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

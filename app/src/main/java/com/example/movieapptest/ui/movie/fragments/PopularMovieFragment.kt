@@ -78,6 +78,7 @@ class PopularMovieFragment : Fragment() {
         // Trigger the initial load
         viewModel.getPopularMovies(API_KEY)
 
+
         navigateToDetailsScreen()
     }
 

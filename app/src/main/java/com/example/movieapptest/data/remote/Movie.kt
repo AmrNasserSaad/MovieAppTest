@@ -1,4 +1,4 @@
-package com.example.movieapptest.data
+package com.example.movieapptest.data.remote
 
 
 import android.os.Parcelable
@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-
+@Entity(tableName = "movies")
 data class Movie(
     @SerializedName("adult")
     val adult: Boolean? = null,
@@ -17,7 +17,8 @@ data class Movie(
     @SerializedName("genre_ids")
     val genreIds: List<Int?>? = null,
     @SerializedName("id")
-    val id: Int? = null,
+    @PrimaryKey
+    val id: Int,
     @SerializedName("original_language")
     val originalLanguage: String? = null,
     @SerializedName("original_title")

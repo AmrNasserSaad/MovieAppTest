@@ -4,11 +4,12 @@ import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.movieapptest.api.TmdbApi
-import com.example.movieapptest.data.Movie
+import com.example.movieapptest.data.local.MovieDao
+import com.example.movieapptest.data.remote.Movie
 
 class PopularMoviePagingSource(
     private val tmdbApi: TmdbApi,
-    private val apiKey: String
+    private val apiKey: String,
 ) : PagingSource<Int, Movie>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {

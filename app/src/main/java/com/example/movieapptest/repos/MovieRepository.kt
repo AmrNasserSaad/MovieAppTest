@@ -8,14 +8,17 @@ import com.example.movieapptest.Pager.PopularMoviePagingSource
 import com.example.movieapptest.Pager.SearchMoviePagingSource
 import com.example.movieapptest.Pager.TopRatedMoviePagingSource
 import com.example.movieapptest.api.TmdbApi
-import com.example.movieapptest.data.Movie
+import com.example.movieapptest.data.local.MovieDao
+import com.example.movieapptest.data.remote.Movie
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+
 class MovieRepository @Inject constructor(
     private val tmdbApi: TmdbApi,
+    private val movieDao: MovieDao
 
-) {
+    ) :MovieRepositoryInterface {
 
     fun getPopularMovies(apiKey: String): Flow<PagingData<Movie>>  {
         Log.d("TAG", "repo called")
@@ -40,4 +43,7 @@ class MovieRepository @Inject constructor(
             pagingSourceFactory = { SearchMoviePagingSource(tmdbApi, query) }
         ).flow
     }
+
+
+
 }
