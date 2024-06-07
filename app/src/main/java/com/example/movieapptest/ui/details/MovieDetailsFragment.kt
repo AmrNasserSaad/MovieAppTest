@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.movieapptest.R
@@ -42,6 +43,10 @@ class MovieDetailFragment : Fragment() {
             movieTitle.text = movie.title
             movieVote.text = movie.voteAverage.toString()
             movieOverview.text = movie.overview
+
+            arrowBack.setOnClickListener {
+                findNavController().navigate(R.id.action_movieDetailsFragment_to_searchFragment)
+            }
         }
 
     }
