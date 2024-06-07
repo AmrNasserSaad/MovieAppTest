@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.movieapptest.R
 import com.example.movieapptest.adapters.MoviePagingAdapter
 import com.example.movieapptest.databinding.FragmentPopularMovieBinding
+import com.example.movieapptest.uistate.UiState
 import com.example.movieapptest.utils.Constants.API_KEY
 import com.example.movieapptest.viewModel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,52 +41,58 @@ class PopularMovieFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.rvPopularMovies.layoutManager = GridLayoutManager(context, 2)
-        binding.rvPopularMovies.adapter = adapter
-        // Observe UI state
-//        lifecycleScope.launch {
-//            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-//                viewModel.uiState.collect { state ->
-//                    when (state) {
-//                        is MovieViewModel.UIState.Loading -> {
-//                            binding.progressBar.visibility = View.VISIBLE
-//                            binding.rvPopularMovies.visibility = View.GONE
-//                            binding.errorMessage.visibility = View.GONE
-//                        }
-//                        is MovieViewModel.UIState.Error -> {
-//                            binding.progressBar.visibility = View.GONE
-//                            binding.rvPopularMovies.visibility = View.GONE
-//                            binding.errorMessage.apply {
-//                                visibility = View.VISIBLE
-//                                text = state.message
-//                            }
-//                        }
-//                        is MovieViewModel.UIState.Success -> {
-//                            binding.progressBar.visibility = View.GONE
-//                            binding.rvPopularMovies.visibility = View.VISIBLE
-//                            binding.errorMessage.visibility = View.GONE
-//                        }
-//                    }
-//                }
-//            }
-//        }
-
+        setupPopularRv()
 
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getPopularMovies(API_KEY).collectLatest { pagingData ->
-                    Log.d("TAG", "Collecting data in fragment")
-                    adapter.submitData(pagingData)
+                viewModel.uiState.collectLatest { state ->
+                    Log.e("TAG", "State collected: $state")
+                    when (state) {
+                        is UiState.Loading -> {
+                            Log.e("TAG", "Loading:Fragment")
+                            binding.progressBar.visibility = View.VISIBLE
+                            binding.rvPopularMovies.visibility = View.GONE
+                            binding.errorMessage.visibility = View.GONE
+                        }
+                        is UiState.Success -> {
+                            Log.e("TAG", "Success: Fragment")
+                            binding.progressBar.visibility = View.GONE
+                            binding.rvPopularMovies.visibility = View.VISIBLE
+                            binding.errorMessage.visibility = View.GONE
+                            adapter.submitData(lifecycle, state.data)
+                        }
+                        is UiState.Error -> {
+                            Log.e("TAG", "Error: Fragment")
+                            binding.progressBar.visibility = View.GONE
+                            binding.rvPopularMovies.visibility = View.GONE
+                            binding.errorMessage.visibility = View.VISIBLE
+                            binding.errorMessage.text = state.message
+                        }
+                        else -> Unit
+                    }
                 }
             }
-
         }
 
+
+        // Trigger the initial load
+        viewModel.getPopularMovies(API_KEY)
+
+        navigateToDetailsScreen()
+    }
+
+
+    private fun navigateToDetailsScreen() {
         adapter.onClickListener = {
             val b = Bundle().apply { putParcelable("movie", it) }
             findNavController()
                 .navigate(R.id.action_homeFragment_to_movieDetailsFragment, b)
         }
+    }
+
+    private fun setupPopularRv() {
+        binding.rvPopularMovies.layoutManager = GridLayoutManager(context, 2)
+        binding.rvPopularMovies.adapter = adapter
     }
 }
 

@@ -17,20 +17,20 @@ class MovieRepository @Inject constructor(
 
 ) {
 
-    fun getPopularMovies(apiKey: String): Pager<Int, Movie> {
+    fun getPopularMovies(apiKey: String): Flow<PagingData<Movie>>  {
         Log.d("TAG", "repo called")
         return Pager(
             config = PagingConfig(pageSize = 20, enablePlaceholders = false),
             pagingSourceFactory = { PopularMoviePagingSource(tmdbApi, apiKey) }
-        )
+        ).flow
     }
 
-    fun getTopRatedMovies(apiKey: String): Pager<Int, Movie> {
+    fun getTopRatedMovies(apiKey: String): Flow<PagingData<Movie>> {
         Log.d("TAG", "repo called")
         return Pager(
             config = PagingConfig(pageSize = 20, enablePlaceholders = false),
             pagingSourceFactory = { TopRatedMoviePagingSource(tmdbApi, apiKey) }
-        )
+        ).flow
     }
 
 

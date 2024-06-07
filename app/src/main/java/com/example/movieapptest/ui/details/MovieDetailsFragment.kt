@@ -45,7 +45,7 @@ class MovieDetailFragment : Fragment() {
             movieOverview.text = movie.overview
 
             arrowBack.setOnClickListener {
-                findNavController().navigate(R.id.action_movieDetailsFragment_to_searchFragment)
+                findNavController().navigate(R.id.action_movieDetailsFragment_to_homeFragment)
             }
         }
 
